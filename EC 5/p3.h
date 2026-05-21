@@ -27,4 +27,9 @@ ResultContainer<typename Container::value_type> delete_range(const Container& co
     return resultado;
 }
 
+template<typename Container, template <typename...> class ResultContainer = vector>
+ResultContainer<typename Container::value_type>
+delete_range(const Container& container, const typename Container::value_type& val) {
+    return delete_range<Container, ResultContainer>(container, {val});
+}
 #endif //PROGRA_III_P3_H

@@ -48,4 +48,13 @@ add_executable(EC5
         "EC 5/p6.h"
         "EC 5/p7.h"
         "EC 5/p8.h"
-        "EC 5/p9.h")
+        "EC 5/p9.h"
+        "EC 5/p1.cpp"
+        "EC 5/p2.cpp"
+        "EC 5/p3.cpp"
+        "EC 5/p4.cpp"
+        "EC 5/p5.cpp"
+        "EC 5/p6.cpp"
+        "EC 5/p7.cpp"
+        "EC 5/p8.cpp"
+        "EC 5/p9.cpp")
