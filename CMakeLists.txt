@@ -38,7 +38,9 @@ add_executable(EC3 "EC 3/main.cpp" "EC 3/P1.cpp" "EC 3/P1.h"
         "EC 3/P12.h")
 add_executable(Semana7 "Semana 7/main.cpp"
         )
-add_executable(EC5 "EC 5/p1.h"
+add_executable(EC5
+        "main.cpp"
+        "EC 5/p1.h"
         "EC 5/p2.h"
         "EC 5/p3.h"
         "EC 5/p4.h"

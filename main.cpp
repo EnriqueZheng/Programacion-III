@@ -1,5 +1,6 @@
 #include <iostream>
 #include <deque>
+#include <forward_list>
 #include "EC 5/p1.h"
 using namespace std;
 
@@ -14,11 +15,11 @@ T sum(Container<T>& t) {
 }
 
 int main() {
-    deque<int> d1 = {1, 2, 3, 4, 5, 6, 7};
-    auto resultado = split_range(d1, 3};
-        // resultado[0] = {1, 2};
-            // resultado[1] = {3, 4};
-                // resultado[2] = {5, 6, 7};
+    std::string all = "El mundo es ancho y ajeno";
+    auto chunks = split_range(all, 5);
+    for (const auto& part : chunks) {
+        std::cout << '|' << part;
+    }   // |El mu|ndo e|s anc|ho y |ajeno
     return 0;
 }
 
