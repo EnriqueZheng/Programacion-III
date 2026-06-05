@@ -38,9 +38,7 @@ add_executable(EC3 "EC 3/main.cpp" "EC 3/P1.cpp" "EC 3/P1.h"
         "EC 3/P12.h")
 add_executable(Semana7 "Semana 7/main.cpp"
         )
-add_executable(EC5
-        "main.cpp"
-        "EC 5/p1.h"
+add_executable(EC5 "EC 5/p1.h"
         "EC 5/p2.h"
         "EC 5/p3.h"
         "EC 5/p4.h"
@@ -48,13 +46,9 @@ add_executable(EC5
         "EC 5/p6.h"
         "EC 5/p7.h"
         "EC 5/p8.h"
-        "EC 5/p9.h"
-        "EC 5/p1.cpp"
-        "EC 5/p2.cpp"
-        "EC 5/p3.cpp"
-        "EC 5/p4.cpp"
-        "EC 5/p5.cpp"
-        "EC 5/p6.cpp"
-        "EC 5/p7.cpp"
-        "EC 5/p8.cpp"
-        "EC 5/p9.cpp")
+        "EC 5/p9.h")
+add_executable(EC7 "EC 7/p1.h"
+        "EC 7/p2.h"
+        "EC 7/p3.h"
+        "EC 7/p4.h"
+        "EC 7/p5.h")
