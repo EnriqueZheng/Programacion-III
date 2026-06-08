@@ -69,6 +69,7 @@ public:
         bool operator!=(const iterator& o) const { return current != o.current; }
     };
 
+
     iterator begin() { return iterator(head); }
     iterator end()   { return iterator(nullptr); }
 };

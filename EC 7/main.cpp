@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <deque>
-#include "p2.h"
+#include "P2.h"
 using namespace std;
 int main() {
     size_t n = 0;
