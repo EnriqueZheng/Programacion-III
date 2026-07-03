@@ -1,0 +1,8 @@
+#input
+    2
+    10 7
+    2
+    9 4
+#output
+    4 9 7 10
+#endtest

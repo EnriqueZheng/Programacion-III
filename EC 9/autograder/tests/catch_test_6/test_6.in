@@ -1,0 +1,10 @@
+#input
+    4
+    Juan Perez 15
+    Maria Diaz 13
+    Rosa Lopez 20
+    Marco Gonzales 19
+    Rosa
+#output
+    Rosa Lopez 20
+#endtest

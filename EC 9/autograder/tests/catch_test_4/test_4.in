@@ -1,0 +1,17 @@
+#input
+    EAS*Y*QUE***ST***IO*N***
+#output
+    EASYQUESTION
+#endtest
+
+#input
+    UN*IV*ERS*IDAD**
+#output
+    UNIVE
+#endtest
+
+#input
+    COMPUTER*****S**CIEN**CE
+#output
+    COMPUTERS
+#endtest
