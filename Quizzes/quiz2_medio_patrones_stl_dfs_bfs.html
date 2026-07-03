@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz de Repaso — Programación III (Nivel Medio B)</title>
+<style>
+:root {
+  --bg: #0f172a;
+  --card-bg: #1e293b;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --accent: #2dd4bf;
+  --accent-2: #4ade80;
+  --hint: #fbbf24;
+  --solution: #34d399;
+  --border: #334155;
+  --code-bg: #0b1220;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  padding: 2rem 1rem;
+}
+.container { max-width: 860px; margin: 0 auto; }
+header.quiz-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid var(--border);
+}
+header.quiz-header h1 { font-size: 1.9rem; margin-bottom: .5rem; color: var(--accent); }
+.meta-badges { display: flex; gap: .5rem; justify-content: center; flex-wrap: wrap; margin-top: .75rem; }
+.badge {
+  display: inline-block;
+  padding: .25rem .75rem;
+  border-radius: 999px;
+  font-size: .8rem;
+  font-weight: 600;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+.badge.level { background: var(--accent); color: #0f172a; border: none; }
+.question {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.75rem;
+}
+.question-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: .75rem; }
+.question-header .qnum { font-weight: 700; color: var(--accent-2); }
+.type-badge { font-size: .75rem; padding: .2rem .6rem; border-radius: 6px; background: #0f172a; color: var(--muted); border: 1px solid var(--border); }
+.topic-badge { font-size: .7rem; padding: .15rem .5rem; border-radius: 6px; background: rgba(45,212,191,.12); color: var(--accent); border: 1px solid var(--border); margin-left: .4rem; }
+.statement { margin-bottom: 1rem; }
+pre { background: var(--code-bg); border-radius: 8px; padding: 1rem; overflow-x: auto; border: 1px solid var(--border); }
+code { font-family: "Fira Code", Consolas, monospace; font-size: .88rem; }
+.options label { display: block; padding: .6rem .8rem; margin-bottom: .5rem; background: #0f172a; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; }
+.options label:hover { border-color: var(--accent); }
+.fill-blank, .code-answer { width: 100%; background: #0f172a; color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: .7rem; font-family: inherit; }
+.code-answer { font-family: Consolas, monospace; resize: vertical; }
+details { margin-top: .75rem; border-radius: 8px; border: 1px solid var(--border); overflow: hidden; }
+details summary { cursor: pointer; padding: .6rem 1rem; font-weight: 600; list-style: none; }
+details summary::-webkit-details-marker { display: none; }
+details.hint-box summary { color: var(--hint); background: rgba(251,191,36,.08); }
+details.solution-box summary { color: var(--solution); background: rgba(52,211,153,.08); }
+details > *:not(summary) { padding: 0 1rem 1rem; }
+footer { text-align: center; color: var(--muted); margin-top: 2rem; font-size: .85rem; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header class="quiz-header">
+    <h1>Quiz de Repaso — Programación III (Nivel Medio B)</h1>
+    <p>Repaso integral: complejidad, invariantes, concurrencia, patrones de diseño, adaptadores STL, árboles binarios, DFS/BFS y Dijkstra.</p>
+    <div class="meta-badges">
+      <span class="badge level">Nivel: Medio</span>
+      <span class="badge">Complejidad</span>
+      <span class="badge">Invariantes</span>
+      <span class="badge">Concurrencia</span>
+      <span class="badge">Patrones de Diseño</span>
+      <span class="badge">Stack/Queue</span>
+      <span class="badge">Árboles Binarios</span>
+      <span class="badge">DFS/BFS</span>
+      <span class="badge">Dijkstra</span>
+    </div>
+  </header>
+
+  <section class="question" id="q1">
+    <div class="question-header">
+      <span class="qnum">Pregunta 1</span>
+      <span><span class="type-badge">Completar</span><span class="topic-badge">Complejidad</span></span>
+    </div>
+    <div class="statement">
+      <p>Completa la complejidad del siguiente bucle (donde <code>n</code> es el tamaño del problema):</p>
+      <pre><code id="q1-stub"></code></pre>
+      <p>Este bucle tiene complejidad O(______), porque <code>n</code> se divide a la mitad en cada iteración.</p>
+    </div>
+    <input type="text" class="fill-blank" placeholder="Escribe tu respuesta...">
+    <details class="hint-box"><summary>💡 Ver pista</summary><p>¿Cuántas veces se puede dividir n entre 2 antes de llegar a 1? Piensa en la relación entre esa cantidad de divisiones y log₂(n).</p></details>
+    <details class="solution-box"><summary>✅ Ver solución</summary><p>Respuesta esperada: O(log n). Como n se reduce a la mitad en cada iteración, el número de iteraciones necesarias para llegar a n≤1 es aproximadamente log₂(n). Este mismo patrón aparece en búsqueda binaria.</p></details>
+  </section>
+
+  <section class="question" id="q2">
+    <div class="question-header">
+      <span class="qnum">Pregunta 2</span>
+      <span><span class="type-badge">Completar</span><span class="topic-badge">Invariantes</span></span>
+    </div>
+    <div class="statement">
+      <p>Para el siguiente algoritmo de búsqueda lineal:</p>
+      <pre><code id="q2-stub"></code></pre>
+      <p>Completa la invariante de ciclo: "Al inicio de cada iteración i, se cumple que ______."</p>
+    </div>
+    <input type="text" class="fill-blank" placeholder="Escribe tu respuesta...">
+    <details class="hint-box"><summary>💡 Ver pista</summary><p>Piensa en qué se puede afirmar sobre la posición del objetivo dentro del subarreglo ya recorrido (arr[0..i-1]), dado que el bucle no ha terminado todavía.</p></details>
+    <details class="solution-box"><summary>✅ Ver solución</summary><p>Respuesta esperada: "el objetivo no se encuentra en ninguna posición del subarreglo arr[0..i-1]" (de lo contrario, el bucle ya habría retornado en una iteración anterior). Esta invariante, junto con la condición de terminación, justifica que si el bucle termina sin encontrar el objetivo, este no está en todo el arreglo.</p></details>
+  </section>
+
+  <section class="question" id="q3">
+    <div class="question-header">
+      <span class="qnum">Pregunta 3</span>
+      <span><span class="type-badge">Opción múltiple</span><span class="topic-badge">Concurrencia</span></span>
+    </div>
+    <div class="statement">
+      <p>En un sistema de reserva de asientos de estadio implementado con concurrencia, la verificación <code>if (asiento_ocupado) return false;</code> y la escritura <code>asiento_ocupado = true;</code> están protegidas dentro del mismo bloque bajo un <code>std::lock_guard</code>. ¿Por qué es necesario que ambas operaciones estén dentro de la misma sección crítica?</p>
+    </div>
+    <div class="options">
+      <label><input type="radio" name="q3"> a) Para que el código compile correctamente.</label>
+      <label><input type="radio" name="q3"> b) Para evitar que dos hilos comprueben el asiento como libre al mismo tiempo y ambos lo reserven (condición de carrera).</label>
+      <label><input type="radio" name="q3"> c) Para que la reserva tarde exactamente 5 milisegundos.</label>
+      <label><input type="radio" name="q3"> d) Para liberar memoria automáticamente al terminar la función.</label>
+    </div>
+    <details class="hint-box"><summary>💡 Ver pista</summary><p>Piensa qué pasaría si dos hilos leen "libre" casi simultáneamente, antes de que ninguno haya escrito "true" en esa posición.</p></details>
+    <details class="solution-box"><summary>✅ Ver solución</summary><p>La respuesta correcta es b). Si la lectura y la escritura no fueran atómicas (protegidas por el mismo lock), dos hilos podrían leer "libre" al mismo tiempo y ambos reservarían el mismo asiento, violando la exclusividad. Es una condición de carrera clásica de tipo "check-then-act", que se resuelve encerrando ambas operaciones en una única sección crítica.</p></details>
+  </section>
+
+  <section class="question" id="q4">
+    <div class="question-header">
+      <span class="qnum">Pregunta 4</span>
+      <span><span class="type-badge">Opción múltiple</span><span class="topic-badge">Patrones de Diseño</span></span>
+    </div>
+    <div class="statement">
+      <p>Observa el siguiente fragmento e identifica qué patrón de diseño representa:</p>
+      <pre><code id="q4-stub"></code></pre>
+    </div>
+    <div class="options">
+      <label><input type="radio" name="q4"> a) Factory</label>
+      <label><input type="radio" name="q4"> b) Strategy</label>
+      <label><input type="radio" name="q4"> c) Decorator</label>
+      <label><input type="radio" name="q4"> d) Singleton</label>
+    </div>
+    <details class="hint-box"><summary>💡 Ver pista</summary><p>Compara la estructura con clases del curso que envuelven otro exportador para agregarle auditoría o un resumen: ¿envuelve otro objeto y añade comportamiento sin modificar su clase original?</p></details>
+    <details class="solution-box"><summary>✅ Ver solución</summary><p>La respuesta correcta es c) Decorator. TimestampedExporter envuelve un objeto Inner (que cumple el mismo "contrato" export_expenses) y añade comportamiento adicional (un timestamp) antes de delegar al objeto envuelto, sin modificar la clase original.</p></details>
+  </section>
+
+  <section class="question" id="q5">
+    <div class="question-header">
+      <span class="qnum">Pregunta 5</span>
+      <span><span class="type-badge">Código</span><span class="topic-badge">Stack/Queue</span></span>
+    </div>
+    <div class="statement">
+      <p>Usando <code>utec::stack&lt;char&gt;</code> y <code>utec::queue&lt;char&gt;</code> del curso (ambos adaptadores construidos sobre <code>std::deque</code>), implementa <code>es_palindromo(const std::string&amp; s)</code> que determine si una cadena es un palíndromo, comparando el orden LIFO de una pila contra el orden FIFO de una cola.</p>
+      <pre><code id="q5-stub"></code></pre>
+    </div>
+    <textarea class="code-answer" rows="8" placeholder="// Escribe tu código aquí"></textarea>
+    <details class="hint-box"><summary>💡 Ver pista</summary><p>Inserta cada carácter en una utec::stack&lt;char&gt; y en una utec::queue&lt;char&gt;; si al extraer elemento por elemento de ambas estructuras los caracteres siempre coinciden, la cadena es palíndromo.</p></details>
+    <details class="solution-box"><summary>✅ Ver solución</summary><pre><code id="q5-solution"></code></pre></details>
+  </section>
+
+  <section class="question" id="q6">
+    <div class="question-header">
+      <span class="qnum">Pregunta 6</span>
+      <span><span class="type-badge">Código</span><span class="topic-badge">Árboles Binarios</span></span>
+    </div>
+    <div class="statement">
+      <p>Implementa <code>recorrido_inorder</code> que retorne un <code>vector&lt;int&gt;</code> con los valores de un árbol binario de búsqueda (BST) en orden ascendente (recorrido izq-raíz-der), usando la estructura:</p>
+      <pre><code id="q6-stub"></code></pre>
+    </div>
+    <textarea class="code-answer" rows="8" placeholder="// Escribe tu código aquí"></textarea>
+    <details class="hint-box"><summary>💡 Ver pista</summary><p>Es recursivo: primero recorre el subárbol izquierdo, luego agrega el valor de la raíz, y después recorre el subárbol derecho. Usa una función auxiliar que acumule resultados en un vector&lt;int&gt;&amp; pasado por referencia.</p></details>
+    <details class="solution-box"><summary>✅ Ver solución</summary><pre><code id="q6-solution"></code></pre></details>
+  </section>
+
+  <section class="question" id="q7">
+    <div class="question-header">
+      <span class="qnum">Pregunta 7</span>
+      <span><span class="type-badge">Código</span><span class="topic-badge">DFS/BFS</span></span>
+    </div>
+    <div class="statement">
+      <p>Implementa <code>recorrido_por_niveles</code> que retorne un <code>vector&lt;vector&lt;int&gt;&gt;</code> con los valores de un árbol binario agrupados por nivel (BFS), usando la misma estructura <code>NodoBST</code> de la pregunta anterior:</p>
+      <pre><code id="q7-stub"></code></pre>
+    </div>
+    <textarea class="code-answer" rows="8" placeholder="// Escribe tu código aquí"></textarea>
+    <details class="hint-box"><summary>💡 Ver pista</summary><p>Usa una std::queue&lt;NodoBST*&gt; (de la STL) para procesar los nodos nivel por nivel: en cada vuelta del bucle externo, procesa exactamente los nodos que ya están en la cola en ese momento (guarda el tamaño de la cola antes de empezar el nivel).</p></details>
+    <details class="solution-box"><summary>✅ Ver solución</summary><pre><code id="q7-solution"></code></pre></details>
+  </section>
+
+  <section class="question" id="q8">
+    <div class="question-header">
+      <span class="qnum">Pregunta 8</span>
+      <span><span class="type-badge">Opción múltiple</span><span class="topic-badge">Dijkstra</span></span>
+    </div>
+    <div class="statement">
+      <p>¿Qué estructura de datos se usa típicamente para elegir eficientemente el siguiente nodo a procesar en el algoritmo de Dijkstra (el de menor distancia tentativa)?</p>
+    </div>
+    <div class="options">
+      <label><input type="radio" name="q8"> a) Una pila (LIFO).</label>
+      <label><input type="radio" name="q8"> b) Una cola simple (FIFO).</label>
+      <label><input type="radio" name="q8"> c) Una cola de prioridad (min-heap).</label>
+      <label><input type="radio" name="q8"> d) Una lista enlazada simple.</label>
+    </div>
+    <details class="hint-box"><summary>💡 Ver pista</summary><p>Piensa en qué estructura te permite obtener, de forma eficiente, el elemento con el valor mínimo entre muchos candidatos, sin tener que recorrerlos todos cada vez.</p></details>
+    <details class="solution-box"><summary>✅ Ver solución</summary><p>La respuesta correcta es c) Una cola de prioridad (min-heap), típicamente std::priority_queue en C++. Permite extraer el nodo con menor distancia tentativa en O(log n) en vez de O(n), lo cual mejora significativamente la complejidad del algoritmo frente a buscar el mínimo linealmente en cada paso.</p></details>
+  </section>
+
+  <footer>Quiz de repaso — Programación III: algoritmos, concurrencia y estructuras de datos. Material de práctica, no oficial del curso.</footer>
+</div>
+<script>
+document.getElementById('q1-stub').textContent = `int contador = 0;
+while (n > 1) {
+    n = n / 2;
+    contador++;
+}`;
+
+document.getElementById('q2-stub').textContent = `int buscar_lineal(vector<int>& arr, int objetivo) {
+    for (int i = 0; i < arr.size(); ++i) {
+        if (arr[i] == objetivo) return i;
+    }
+    return -1;
+}`;
+
+document.getElementById('q4-stub').textContent = `template <class Inner>
+struct TimestampedExporter {
+    Inner inner;
+    std::string export_expenses(const ExpenseList& e) const {
+        return "[" + get_timestamp() + "] " + inner.export_expenses(e);
+    }
+};`;
+
+document.getElementById('q5-stub').textContent = `bool es_palindromo(const std::string& s);`;
+
+document.getElementById('q5-solution').textContent = `#include "stack_utec.h"
+#include "queue_utec.h"
+
+bool es_palindromo(const std::string& s) {
+    utec::stack<char> pila;
+    utec::queue<char> cola;
+    for (char c : s) { pila.push(c); cola.push(c); }
+    while (!pila.empty()) {
+        if (pila.top() != cola.front()) return false;
+        pila.pop();
+        cola.pop();
+    }
+    return true;
+}`;
+
+document.getElementById('q6-stub').textContent = `struct NodoBST {
+    int valor;
+    NodoBST* izq = nullptr;
+    NodoBST* der = nullptr;
+};
+std::vector<int> recorrido_inorder(NodoBST* raiz);`;
+
+document.getElementById('q6-solution').textContent = `void inorder_aux(NodoBST* nodo, std::vector<int>& resultado) {
+    if (!nodo) return;
+    inorder_aux(nodo->izq, resultado);
+    resultado.push_back(nodo->valor);
+    inorder_aux(nodo->der, resultado);
+}
+
+std::vector<int> recorrido_inorder(NodoBST* raiz) {
+    std::vector<int> resultado;
+    inorder_aux(raiz, resultado);
+    return resultado;
+}`;
+
+document.getElementById('q7-stub').textContent = `std::vector<std::vector<int>> recorrido_por_niveles(NodoBST* raiz);`;
+
+document.getElementById('q7-solution').textContent = `std::vector<std::vector<int>> recorrido_por_niveles(NodoBST* raiz) {
+    std::vector<std::vector<int>> niveles;
+    if (!raiz) return niveles;
+    std::queue<NodoBST*> q;
+    q.push(raiz);
+    while (!q.empty()) {
+        size_t tam = q.size();
+        std::vector<int> nivel;
+        for (size_t i = 0; i < tam; ++i) {
+            NodoBST* actual = q.front(); q.pop();
+            nivel.push_back(actual->valor);
+            if (actual->izq) q.push(actual->izq);
+            if (actual->der) q.push(actual->der);
+        }
+        niveles.push_back(nivel);
+    }
+    return niveles;
+}`;
+</script>
+</body>
+</html>

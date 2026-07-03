@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz de Repaso — Programación III (Nivel Medio A)</title>
+<style>
+:root {
+  --bg: #0f172a;
+  --card-bg: #1e293b;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --accent: #38bdf8;
+  --accent-2: #818cf8;
+  --hint: #fbbf24;
+  --solution: #34d399;
+  --border: #334155;
+  --code-bg: #0b1220;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  padding: 2rem 1rem;
+}
+.container { max-width: 860px; margin: 0 auto; }
+header.quiz-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid var(--border);
+}
+header.quiz-header h1 { font-size: 1.9rem; margin-bottom: .5rem; color: var(--accent); }
+.meta-badges { display: flex; gap: .5rem; justify-content: center; flex-wrap: wrap; margin-top: .75rem; }
+.badge {
+  display: inline-block;
+  padding: .25rem .75rem;
+  border-radius: 999px;
+  font-size: .8rem;
+  font-weight: 600;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+.badge.level { background: var(--accent); color: #0f172a; border: none; }
+.question {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.75rem;
+}
+.question-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: .75rem; }
+.question-header .qnum { font-weight: 700; color: var(--accent-2); }
+.type-badge { font-size: .75rem; padding: .2rem .6rem; border-radius: 6px; background: #0f172a; color: var(--muted); border: 1px solid var(--border); }
+.topic-badge { font-size: .7rem; padding: .15rem .5rem; border-radius: 6px; background: rgba(56,189,248,.12); color: var(--accent); border: 1px solid var(--border); margin-left: .4rem; }
+.statement { margin-bottom: 1rem; }
+pre { background: var(--code-bg); border-radius: 8px; padding: 1rem; overflow-x: auto; border: 1px solid var(--border); }
+code { font-family: "Fira Code", Consolas, monospace; font-size: .88rem; }
+.options label { display: block; padding: .6rem .8rem; margin-bottom: .5rem; background: #0f172a; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; }
+.options label:hover { border-color: var(--accent); }
+.fill-blank, .code-answer { width: 100%; background: #0f172a; color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: .7rem; font-family: inherit; }
+.code-answer { font-family: Consolas, monospace; resize: vertical; }
+details { margin-top: .75rem; border-radius: 8px; border: 1px solid var(--border); overflow: hidden; }
+details summary { cursor: pointer; padding: .6rem 1rem; font-weight: 600; list-style: none; }
+details summary::-webkit-details-marker { display: none; }
+details.hint-box summary { color: var(--hint); background: rgba(251,191,36,.08); }
+details.solution-box summary { color: var(--solution); background: rgba(52,211,153,.08); }
+details > *:not(summary) { padding: 0 1rem 1rem; }
+footer { text-align: center; color: var(--muted); margin-top: 2rem; font-size: .85rem; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header class="quiz-header">
+    <h1>Quiz de Repaso — Programación III (Nivel Medio A)</h1>
+    <p>Repaso integral: complejidad, invariantes, concurrencia, patrones de diseño, adaptadores STL, árboles binarios, DFS/BFS y Dijkstra.</p>
+    <div class="meta-badges">
+      <span class="badge level">Nivel: Medio</span>
+      <span class="badge">Complejidad</span>
+      <span class="badge">Invariantes</span>
+      <span class="badge">Concurrencia</span>
+      <span class="badge">Patrones de Diseño</span>
+      <span class="badge">Stack/Queue</span>
+      <span class="badge">Árboles Binarios</span>
+      <span class="badge">DFS/BFS</span>
+      <span class="badge">Dijkstra</span>
+    </div>
+  </header>
+
+  <section class="question" id="q1">
+    <div class="question-header">
+      <span class="qnum">Pregunta 1</span>
+      <span><span class="type-badge">Opción múltiple</span><span class="topic-badge">Complejidad</span></span>
+    </div>
+    <div class="statement">
+      <p>Analiza el siguiente fragmento de código y selecciona su complejidad temporal en el peor caso:</p>
+      <pre><code id="q1-stub"></code></pre>
+    </div>
+    <div class="options">
+      <label><input type="radio" name="q1"> a) O(n)</label>
+      <label><input type="radio" name="q1"> b) O(n log n)</label>
+      <label><input type="radio" name="q1"> c) O(n²)</label>
+      <label><input type="radio" name="q1"> d) O(2^n)</label>
+    </div>
+    <details class="hint-box"><summary>💡 Ver pista</summary><p>Cuenta cuántas veces se ejecuta el cuerpo interno sumando desde i=0 hasta n-1 (progresión aritmética).</p></details>
+    <details class="solution-box"><summary>✅ Ver solución</summary><p>La respuesta correcta es c) O(n²). La suma interna ejecuta (n) + (n-1) + ... + 1 ≈ n²/2 iteraciones en total, así que la complejidad es O(n²). Aunque el límite interno depende de i, el número total de operaciones crece cuadráticamente con n.</p></details>
+  </section>
+
+  <section class="question" id="q2">
+    <div class="question-header">
+      <span class="qnum">Pregunta 2</span>
+      <span><span class="type-badge">Completar</span><span class="topic-badge">Invariantes</span></span>
+    </div>
+    <div class="statement">
+      <p>Completa la invariante de ciclo para el siguiente algoritmo de búsqueda del máximo en un arreglo:</p>
+      <pre><code id="q2-stub"></code></pre>
+      <p>Al inicio de cada iteración i, la variable maximo contiene "______".</p>
+    </div>
+    <input type="text" class="fill-blank" placeholder="Escribe tu respuesta...">
+    <details class="hint-box"><summary>💡 Ver pista</summary><p>Piensa en qué parte del arreglo ya se ha procesado antes de llegar a la iteración i.</p></details>
+    <details class="solution-box"><summary>✅ Ver solución</summary><p>Respuesta esperada: "maximo contiene el valor más grande del subarreglo arr[0..i-1]" (los elementos ya recorridos). Se cumple: inicialización (i=1, maximo=arr[0], correcto para arr[0..0]), mantenimiento (cada iteración compara y actualiza correctamente), terminación (cuando i=n, maximo es el máximo de todo el arreglo).</p></details>
+  </section>
+
+  <section class="question" id="q3">
+    <div class="question-header">
+      <span class="qnum">Pregunta 3</span>
+      <span><span class="type-badge">Código</span><span class="topic-badge">Concurrencia</span></span>
+    </div>
+    <div class="statement">
+      <p>Basándote en el estilo de una función del curso que reparte un vector entre varios hilos usando std::thread::hardware_concurrency para procesarlo en paralelo, implementa count_evens_concurrent que cuente cuántos números pares hay en un contenedor, repartiendo el trabajo entre varios hilos y combinando los resultados parciales al final.</p>
+      <pre><code id="q3-stub"></code></pre>
+    </div>
+    <textarea class="code-answer" rows="8" placeholder="// Escribe tu código aquí"></textarea>
+    <details class="hint-box"><summary>💡 Ver pista</summary><p>Divide el contenedor en bloques (uno por hilo, usando std::next para calcular los límites); cada hilo cuenta los pares de su bloque y guarda el resultado en un vector&lt;int&gt; parciales[i]; al final suma todos los parciales (patrón map-reduce).</p></details>
+    <details class="solution-box"><summary>✅ Ver solución</summary><pre><code id="q3-solution"></code></pre></details>
+  </section>
+
+  <section class="question" id="q4">
+    <div class="question-header">
+      <span class="qnum">Pregunta 4</span>
+      <span><span class="type-badge">Opción múltiple</span><span class="topic-badge">Patrones de Diseño</span></span>
+    </div>
+    <div class="statement">
+      <p>En el curso, la función sort_with(values, cmp) recibe el criterio de comparación como parámetro (un comparador/lambda) en vez de tener el criterio de orden fijo dentro de la función. ¿Cuál es la ventaja principal de este diseño (patrón Strategy)?</p>
+    </div>
+    <div class="options">
+      <label><input type="radio" name="q4"> a) Hace que la función se ejecute más rápido en tiempo de ejecución.</label>
+      <label><input type="radio" name="q4"> b) Permite reutilizar la misma función sort_with con distintos criterios de orden sin modificar su código (por ejemplo, ordenar por monto o por categoría y fecha).</label>
+      <label><input type="radio" name="q4"> c) Evita que el código necesite plantillas (templates).</label>
+      <label><input type="radio" name="q4"> d) Garantiza que el ordenamiento sea siempre estable.</label>
+    </div>
+    <details class="hint-box"><summary>💡 Ver pista</summary><p>Piensa en cuántas veces tendrías que reescribir una función 'sort_with_por_monto', 'sort_with_por_fecha', etc. si el criterio estuviera fijo dentro de la función, en vez de recibirlo como parámetro.</p></details>
+    <details class="solution-box"><summary>✅ Ver solución</summary><p>La respuesta correcta es b). El patrón Strategy permite intercambiar el algoritmo/criterio (la función de comparación) sin tocar el código de sort_with; basta con pasar un comparador distinto como argumento. Esto favorece la reutilización y evita duplicar código para cada criterio de orden posible.</p></details>
+  </section>
+
+  <section class="question" id="q5">
+    <div class="question-header">
+      <span class="qnum">Pregunta 5</span>
+      <span><span class="type-badge">Código</span><span class="topic-badge">Stack/Queue</span></span>
+    </div>
+    <div class="statement">
+      <p>Usando utec::stack&lt;char&gt; del curso (adaptador construido sobre std::deque), implementa invertir_cadena(const std::string&amp; s) que retorne la cadena s invertida.</p>
+      <pre><code id="q5-stub"></code></pre>
+    </div>
+    <textarea class="code-answer" rows="8" placeholder="// Escribe tu código aquí"></textarea>
+    <details class="hint-box"><summary>💡 Ver pista</summary><p>Apila cada carácter de s en orden; luego desapílalos uno por uno y concaténalos — al ser una estructura LIFO, saldrán en orden inverso.</p></details>
+    <details class="solution-box"><summary>✅ Ver solución</summary><pre><code id="q5-solution"></code></pre></details>
+  </section>
+
+  <section class="question" id="q6">
+    <div class="question-header">
+      <span class="qnum">Pregunta 6</span>
+      <span><span class="type-badge">Código</span><span class="topic-badge">Árboles Binarios</span></span>
+    </div>
+    <div class="statement">
+      <p>Implementa la función insertar para un árbol binario de búsqueda (BST) definido como:</p>
+      <pre><code id="q6-stub"></code></pre>
+    </div>
+    <textarea class="code-answer" rows="8" placeholder="// Escribe tu código aquí"></textarea>
+    <details class="hint-box"><summary>💡 Ver pista</summary><p>Es una función recursiva: si raiz es nullptr, crea un nuevo nodo; si no, decide si el valor va al subárbol izquierdo o derecho comparando con raiz->valor, y llama recursivamente sobre ese subárbol.</p></details>
+    <details class="solution-box"><summary>✅ Ver solución</summary><pre><code id="q6-solution"></code></pre></details>
+  </section>
+
+  <section class="question" id="q7">
+    <div class="question-header">
+      <span class="qnum">Pregunta 7</span>
+      <span><span class="type-badge">Opción múltiple</span><span class="topic-badge">DFS/BFS</span></span>
+    </div>
+    <div class="statement">
+      <p>¿Cuál de las siguientes afirmaciones es correcta?</p>
+    </div>
+    <div class="options">
+      <label><input type="radio" name="q7"> a) BFS usa una pila (stack) y DFS usa una cola (queue).</label>
+      <label><input type="radio" name="q7"> b) DFS explora tan profundo como puede antes de retroceder, y puede implementarse con recursión o con una pila explícita; BFS explora nivel por nivel usando una cola.</label>
+      <label><input type="radio" name="q7"> c) BFS y DFS siempre visitan los nodos en el mismo orden.</label>
+      <label><input type="radio" name="q7"> d) DFS no puede usarse en árboles, solo en grafos.</label>
+    </div>
+    <details class="hint-box"><summary>💡 Ver pista</summary><p>Relaciona 'profundidad primero' (Depth-First) con la estructura LIFO (pila/recursión), y 'amplitud primero' (Breadth-First) con la estructura FIFO (cola).</p></details>
+    <details class="solution-box"><summary>✅ Ver solución</summary><p>La respuesta correcta es b). DFS (Depth-First Search) profundiza en una rama antes de retroceder (backtracking), naturalmente modelado con una pila o recursión. BFS (Breadth-First Search) visita todos los vecinos del nivel actual antes de avanzar al siguiente, usando una cola.</p></details>
+  </section>
+
+  <section class="question" id="q8">
+    <div class="question-header">
+      <span class="qnum">Pregunta 8</span>
+      <span><span class="type-badge">Completar</span><span class="topic-badge">Dijkstra</span></span>
+    </div>
+    <div class="statement">
+      <p>Completa: "Dijkstra es un algoritmo de tipo "______" (elige en cada paso el nodo no procesado con menor distancia tentativa) y solo garantiza resultados correctos si todos los pesos de las aristas son "______".</p>
+    </div>
+    <input type="text" class="fill-blank" placeholder="Escribe tu respuesta...">
+    <details class="hint-box"><summary>💡 Ver pista</summary><p>Piensa en la estrategia general del algoritmo (¿explora todas las combinaciones posibles o toma la mejor decisión local en cada paso?) y en qué tipo de pesos rompen la garantía de optimalidad.</p></details>
+    <details class="solution-box"><summary>✅ Ver solución</summary><p>Respuesta esperada: "Dijkstra es un algoritmo voraz/greedy ... y solo funciona correctamente con pesos no negativos." Al elegir siempre el nodo con menor distancia tentativa sin reconsiderar decisiones pasadas, un peso negativo podría abrir después un camino más corto que ya se descartó.</p></details>
+  </section>
+
+  <footer>Quiz de repaso — Programación III: algoritmos, concurrencia y estructuras de datos. Material de práctica, no oficial del curso.</footer>
+</div>
+<script>
+document.getElementById('q1-stub').textContent = `for (int i = 0; i < n; ++i) {
+    for (int j = i; j < n; ++j) {
+        // operación O(1)
+    }
+}`;
+
+document.getElementById('q2-stub').textContent = `int maximo = arr[0];
+for (int i = 1; i < n; ++i) {
+    if (arr[i] > maximo) maximo = arr[i];
+}`;
+
+document.getElementById('q3-stub').textContent = `template<typename T, template<typename...> class Container>
+int count_evens_concurrent(Container<T>& cnt);`;
+
+document.getElementById('q3-solution').textContent = `template<typename T, template<typename...> class Container>
+int count_evens_concurrent(Container<T>& cnt) {
+    const size_t n = cnt.size();
+    if (n == 0) return 0;
+    unsigned int nthreads = std::thread::hardware_concurrency();
+    if (nthreads == 0) nthreads = 2;
+    if (nthreads > n) nthreads = static_cast<unsigned int>(n);
+
+    std::vector<int> parciales(nthreads, 0);
+    std::vector<std::thread> hilos;
+    const size_t bloque = n / nthreads;
+    auto it = cnt.begin();
+
+    for (unsigned int i = 0; i < nthreads; ++i) {
+        auto ini = it;
+        size_t cant = (i == nthreads - 1) ? (n - bloque * i) : bloque;
+        auto fin = std::next(ini, cant);
+        it = fin;
+        hilos.emplace_back([ini, fin, &parciales, i]() {
+            int local = 0;
+            for (auto cur = ini; cur != fin; ++cur)
+                if (*cur % 2 == 0) ++local;
+            parciales[i] = local;
+        });
+    }
+    for (auto& h : hilos) h.join();
+    int total = 0;
+    for (int p : parciales) total += p;
+    return total;
+}`;
+
+document.getElementById('q5-stub').textContent = `std::string invertir_cadena(const std::string& s);`;
+
+document.getElementById('q5-solution').textContent = `#include "stack_utec.h"
+
+std::string invertir_cadena(const std::string& s) {
+    utec::stack<char> pila;
+    for (char c : s) pila.push(c);
+    std::string resultado;
+    while (!pila.empty()) {
+        resultado += pila.top();
+        pila.pop();
+    }
+    return resultado;
+}`;
+
+document.getElementById('q6-stub').textContent = `struct NodoBST {
+    int valor;
+    NodoBST* izq = nullptr;
+    NodoBST* der = nullptr;
+};
+NodoBST* insertar(NodoBST* raiz, int valor);`;
+
+document.getElementById('q6-solution').textContent = `NodoBST* insertar(NodoBST* raiz, int valor) {
+    if (raiz == nullptr) {
+        NodoBST* nuevo = new NodoBST();
+        nuevo->valor = valor;
+        return nuevo;
+    }
+    if (valor < raiz->valor)
+        raiz->izq = insertar(raiz->izq, valor);
+    else if (valor > raiz->valor)
+        raiz->der = insertar(raiz->der, valor);
+    return raiz;
+}`;
+</script>
+</body>
+</html>
